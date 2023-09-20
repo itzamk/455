@@ -69,4 +69,6 @@ def derivative(h):
 
 for i in range(20):
     
-    print(f'10^-{i+1} --> {derivative(i+1)}')
+    h = 10**-(i+1)
+
+    print(f'10^-{i+1} --> {derivative(h)}')

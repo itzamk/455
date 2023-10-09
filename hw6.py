@@ -36,7 +36,7 @@ def newton(x0, steps):
 
     return x0
 
-bisect = bisection(1, 2, 6)
+bisect = bisection(0, 2, 6)
 print(f"\nBisection Method: {bisect}")
 
 newt = newton(1, 6)

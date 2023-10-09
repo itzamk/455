@@ -15,19 +15,26 @@ for i in range(100):
 
 # Function to find red objects
 def find_red_objects(frame):
+
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     lower_red = np.array([0, 100, 100])
     upper_red = np.array([10, 255, 255])
     mask = cv2.inRange(hsv, lower_red, upper_red)
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
     if not contours:
         return None
+    
     largest_contour = max(contours, key=cv2.contourArea)
+    
     moments = cv2.moments(largest_contour)
+    
     if moments["m00"] == 0:
         return None
+    
     cx = int(moments["m10"] / moments["m00"])
     cy = int(moments["m01"] / moments["m00"])
+    
     return cx, cy
 
 # Main loop to check for red objects and control the robot

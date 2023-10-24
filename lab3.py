@@ -7,10 +7,10 @@ import math
 
 # function and derivative
 def f(x):
-    return x**2
+    return math.exp(math.sin(x))
 
 def f_prime(x):
-    return 2*x
+    return math.exp(math.sin(x)) * math.cos(x)
 
 # backward
 def backward_difference(x, h):
@@ -24,7 +24,7 @@ def forward_difference(x, h):
 def centered_difference(x, h):
     return (f(x+h) - f(x-h)) / (2*h)
 
-x = 0
+x = 1
 actual_derivative = f_prime(x)
 
 bw_prev_error = 0

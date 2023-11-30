@@ -8,8 +8,8 @@ Lab 6
 import math
 
 def f(x):
-    #return math.exp(x)
-    return 3*x**2
+    return math.exp(x)
+    #return 3*x**2
 
 true_val = math.exp(1) - 1
 
@@ -18,7 +18,7 @@ def left_endpoint(f, start, end, delta_x):
     integral = 0
     x = start
 
-    while x < end:
+    for _ in range(int((end-start)/delta_x)):
 
         integral += f(x) * delta_x
         x += delta_x
@@ -30,7 +30,7 @@ def right_endpoint(f, start, end, delta_x):
     integral = 0
     x = start
 
-    while x < end:
+    for _ in range(int((end-start)/delta_x)):
 
         integral += f(x + delta_x) * delta_x
         x += delta_x
@@ -42,10 +42,9 @@ def midpoint(f, start, end, delta_x):
     integral = 0
     x = start
 
-    while x < end:
-        print(f((x + (x+delta_x)) / 2))
+    for _ in range(int((end-start)/delta_x)):
+
         integral += f((x + (x+delta_x)) / 2) * delta_x
-        print(integral)
         x += delta_x
 
     return integral
@@ -55,7 +54,7 @@ def trapezoidal(f, start, end, delta_x):
     integral = 0
     x = start
 
-    while x < end:
+    for _ in range(int((end-start)/delta_x)):
         
         integral += ((f(x) + f(x+delta_x)) / 2) * delta_x
         x += delta_x
@@ -102,13 +101,13 @@ right_error2 = abs(right-true_val)
 mid_error2 = abs(mid-true_val)
 trapezoid_error2 = abs(trapezoid-true_val)
 
-print(f"Left endpoint approximation: {left:.6f}\t\t Error: {left_error2:.5f}\t\t Error ratio: {abs(left_error2/left_error1):.5f}")
-print(f"Right endpoint approximation: {right:.6f}\t\t Error: {right_error2:.5f}\t\t Error ratio: {abs(right_error2/right_error1):.5f}")
-print(f"Midpoint approximation: {mid:.6f}\t\t Error: {mid_error2:.5f}\t\t Error ratio: {abs(mid_error2/mid_error1):.5f}")
-print(f"Trapezoid approximation: {trapezoid:.6f}\t\t Error: {trapezoid_error2:.5f}\t\t Error ratio: {abs(trapezoid_error2/trapezoid_error1):.5f}")
+print(f"Left endpoint approximation: {left:.6f}\t\t Error: {left_error2:.5f}\t\t Error ratio: {abs(left_error2/left_error1):.2f}")
+print(f"Right endpoint approximation: {right:.6f}\t\t Error: {right_error2:.5f}\t\t Error ratio: {abs(right_error2/right_error1):.2f}")
+print(f"Midpoint approximation: {mid:.6f}\t\t Error: {mid_error2:.5f}\t\t Error ratio: {abs(mid_error2/mid_error1):.2f}")
+print(f"Trapezoid approximation: {trapezoid:.6f}\t\t Error: {trapezoid_error2:.5f}\t\t Error ratio: {abs(trapezoid_error2/trapezoid_error1):.2f}")
 
 ##### delta_x = 0.025
-delta_x = 0.25
+delta_x = 0.025
 print(f"\n\n\t----- delta_x = {delta_x} -----\n")
 
 # approximations
@@ -123,7 +122,7 @@ right_error3 = abs(right-true_val)
 mid_error3 = abs(mid-true_val)
 trapezoid_error3 = abs(trapezoid-true_val)
 
-print(f"Left endpoint approximation: {left:.6f}\t\t Error: {left_error3:.5f}\t\t Error ratio: {abs(left_error3/left_error2):.5f}")
-print(f"Right endpoint approximation: {right:.6f}\t\t Error: {right_error3:.5f}\t\t Error ratio: {abs(right_error3/right_error2):.5f}")
-print(f"Midpoint approximation: {mid:.6f}\t\t Error: {mid_error3:.5f}\t\t Error ratio: {abs(mid_error3/mid_error2):.5f}")
-print(f"Trapezoid approximation: {trapezoid:.6f}\t\t Error: {trapezoid_error3:.5f}\t\t Error ratio: {abs(trapezoid_error3/trapezoid_error2):.5f}")
+print(f"Left endpoint approximation: {left:.6f}\t\t Error: {left_error3:.5f}\t\t Error ratio: {abs(left_error3/left_error2):.2f}")
+print(f"Right endpoint approximation: {right:.6f}\t\t Error: {right_error3:.5f}\t\t Error ratio: {abs(right_error3/right_error2):.2f}")
+print(f"Midpoint approximation: {mid:.6f}\t\t Error: {mid_error3:.5f}\t\t Error ratio: {abs(mid_error3/mid_error2):.2f}")
+print(f"Trapezoid approximation: {trapezoid:.6f}\t\t Error: {trapezoid_error3:.5f}\t\t Error ratio: {abs(trapezoid_error3/trapezoid_error2):.2f}")
